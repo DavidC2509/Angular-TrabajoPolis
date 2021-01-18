@@ -1,0 +1,99 @@
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between fixed-top">
+        <div class="container">
+            <a class="navbar-brand" [routerLink] = "['/index']">SolaresPolis</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <div>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink] = "['/index']">Inicio</a>
+                    </li>
+                    <div *ngIf="usuario == null" class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink] = "['/login']">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink] = "['/registro']">Registro</a>
+                        </li>
+                    </div>
+                    <div *ngIf="tipo == 'Administrador'" class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" id="opcionesCiudades" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Ciudades
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="opcionesCiudades">
+                                <a class="dropdown-item" [routerLink] = "['/ciudad']">Crear</a>
+                                <a class="dropdown-item" [routerLink] = "['/ciudades']">Lista</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" id="opcionesCiudades" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Curriculus Ingresados
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="opcionesCiudades">
+                                <a class="dropdown-item" [routerLink] = "['/listCurriculum']">Lista</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" id="opcionesCategoria" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Categorias
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="opcionesCategoria">
+                                <a class="dropdown-item" [routerLink] = "['/categoria']">Crear</a>
+                                <a class="dropdown-item" [routerLink] = "['/categorias']">Lista</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" id="opcionesUsuarios" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Usuarios
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="opcionesUsuarios">
+                                <a class="dropdown-item" [routerLink] = "['/usuario']">Crear</a>
+                                <a class="dropdown-item" [routerLink] = "['/usuarios']">Lista</a>
+                            </div>
+                        </li>
+                    </div>
+                    <div *ngIf="tipo == 'Empleador' || tipo == 'Administrador'" class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" id="opcionesEmpleos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Empleos
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="opcionesEmpleos">
+                                <a class="dropdown-item" [routerLink] = "['/empleo']">Crear</a>
+                                <a class="dropdown-item" [routerLink] = "['/empleos']">Lista</a>
+                            </div>
+                        </li>
+                    </div>
+                    <div *ngIf="tipo == 'Solicitante'" class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" id="opcionesEmpleos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Currinculum
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="opcionesEmpleos">
+                                <a class="dropdown-item" [routerLink] = "['/curriculum']">Crear</a>
+                                <a class="dropdown-item" [routerLink] = "['/listCurriculum']">Lista</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" id="opcionesPropuestas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Propuestas
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="opcionesPropuestas">
+                                <a class="dropdown-item" [routerLink] = "['/misPropuestas']">Lista</a>
+                            </div>
+                        </li>
+                    </div>
+                    <div *ngIf="usuario != null" class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink] = "['/index']" (click)="logout()">Logout</a>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </nav>
+<br>

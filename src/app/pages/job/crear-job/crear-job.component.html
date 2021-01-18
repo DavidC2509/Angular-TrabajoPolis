@@ -1,0 +1,78 @@
+<br><div class="row justify-content-center">
+    <div class="col-6 formJob">
+        <h2 class="text-center">Formulario de Publicación</h2>
+        <div>
+            <div class="form-group">
+                <label for="tituloEmpleo">Titulo:</label>
+                <input type="text" id="tituloEmpleo" [(ngModel)]="titulo" class="form-control" placeholder="Titulo">
+            </div>
+            <div class="form-group">
+                <label for="DescripcionEmpleo">Descripcion:</label>
+                <input type="text" id="DescripcionEmpleo" [(ngModel)]="descripcion" class="form-control" placeholder="Descripcion">
+            </div>
+            <div class="form-group">
+                <label for="empresaEmpleo">Empresa:</label>
+                <input type="text" id="empresaEmpleo" [(ngModel)]="empresa" class="form-control" placeholder="Empresa">
+            </div>
+            <div class="form-group">
+                <label for="telefonoEmpleo">Telefono:</label>
+                <div class="row">
+                    <div class="col-3">
+                        <select  id="categoriasEmpleos" [(ngModel)]="opcionTelefono" class="form-control">
+                            <option value="+591">+591</option>
+                        </select>
+                    </div>
+                    <div class="col-9">
+                        <input type="number" id="telefonoEmpleo" [(ngModel)]="telefono" class="form-control" placeholder="Telefono">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="form-group">
+                <label for="emailEmpleo">Email:</label>
+                <input type="email" id="emailEmpleo" [(ngModel)]="email" class="form-control" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="ciudadesEmpleos">Ciudad:</label>
+                <select  id="ciudadesEmpleos" [(ngModel)]="opcionCiudad" class="form-control">
+                    <option value="0">Selecciona una opción</option>
+                    <option [value] = "item.id"  *ngFor="let item of listCiudades">{{item.nombre}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="categoriasEmpleos">Categoria:</label>
+                <div class="row">
+                    <div class="col-9">
+                        <select  id="categoriasEmpleos" [(ngModel)]="opcionCategoria" class="form-control">
+                            <option value="0">Selecciona una opción</option>
+                            <option [value] = "item.id +'-'+item.nombre"  *ngFor="let item of listCategorias">{{item.nombre}}</option>
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <button class="btn btn-info" (click)="agregarCategoria()">Agregar Categoria</button>
+                    </div>
+                </div>
+            </div>
+            <table *ngIf="opcionesSelecionadasCategorias.length > 0"  class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Operaciones</th>
+                    </tr>
+                </thead>
+                <tbody  *ngFor="let item of opcionesSelecionadasCategorias; let indece=index" >
+                    <tr>
+                        <th scope="row">{{indece + 1}}</th>
+                        <td>{{item.nombre}}</td>
+                        <td>
+                            <button class='btn btn-danger'>
+                                <i class='fa fa-trash' (click)="quitarCategoria(item)"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" (click)="insertar()"  class="btn btn-primary"> Enviar</button>
+        </div>
+    </div>
+</div>

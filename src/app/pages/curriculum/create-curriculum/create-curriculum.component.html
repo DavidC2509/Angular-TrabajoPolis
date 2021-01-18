@@ -1,0 +1,44 @@
+<br>
+<div class="row justify-content-center">
+    <div class="col-5">
+        <h2 class="text-center">Registro de Curriculum</h2>
+        <div>
+            <div class="form-group">
+                <label for="TrabajosResum" >Trabajos Anteriores</label>
+                <textarea type="text" id="TrabajosResum" class="form-control" [(ngModel)]="trabajosAnteriores" placeholder="Trabajos Anteriores"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="LogrosResum">Logros</label>
+                <textarea type="text" id="LogrosResum" class="form-control" [(ngModel)]="logros" placeholder="Logros"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="ProfesionResum">Profesion</label>
+                <input type="email" id="ProfesionResum" [(ngModel)]="profesion" class="form-control" placeholder="Profesion">
+            </div>
+            <div class="form-group">
+                <label for="TelefonoResum">Telefono:</label>
+                <div class="row">
+                    <div class="col-3">
+                        <input type="text" name="listTele"  class="form-control" value="+591">
+                    </div>
+                    <div class="col-9">
+                        <input type="text" id="TelefonoResum" [(ngModel)]="telefono" name="telefono" class="form-control" placeholder="Telefono">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ciudadesEmpleos">Ciudad:</label>
+                <select  id="ciudadesEmpleos" [(ngModel)]="opcionCiudad" class="form-control">
+                    <option value="0">Selecciona una opción</option>
+                    <option [value] = "item.id"  *ngFor="let item of listCiudades">{{item.nombre}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="FechaResum">Fecha de Nacimiento</label>
+                <input type="date" id="FechaResum" class="form-control"  [(ngModel)]="fecha" placeholder="Email">
+            </div>
+            <button type="button"  class="btn btn-info" (click)="insert()">Enviar</button>
+        </div>
+    </div>
+</div>
+<br>

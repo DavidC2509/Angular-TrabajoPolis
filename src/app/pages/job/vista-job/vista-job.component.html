@@ -1,0 +1,94 @@
+<br><div class="row justify-content-center">
+    <div class="col-6 formJob">
+        <div class="row">
+            <div class="col-md-10">
+                <h2 class="text-center">Publicacion de Trabajo</h2>
+            </div>
+            <div class="col-md-2" *ngIf="usuario == null" >
+                <button type="button" class="btn btn-primary" [routerLink] = "['registro']">
+                    Registro
+                </button>
+            </div>
+            <div class="col-md-2" *ngIf="usuario !== null" >
+                <button type="button" *ngIf="usuario.rol == 'Solicitante'"  class="btn btn-primary"  data-toggle="modal" data-target="#myResume">
+                    Postularse
+                </button>
+            </div>
+        </div>
+        <div>
+            <div class="form-group">
+                <label>Titulo:</label>
+                <input type="text" id="tituloEmpleo" name="titulo" [(ngModel)]="titulo" class="form-control" placeholder="Titulo">
+            </div>
+            <div class="form-group">
+                <label>Descripcion:</label>
+                <input type="text" id="DescripcionEmpleo" name="descripcion" [(ngModel)]="descripcion" class="form-control" placeholder="Descripcion">
+            </div>
+            <div class="form-group">
+                <label>Empresa:</label>
+                <input type="text" id="empresaEmpleo" name="empleo" [(ngModel)]="empresa" class="form-control" placeholder="Empresa">
+            </div>
+            <div class="form-group">
+                <label>Telefono:</label>
+                <div class="row">
+                    <div class="col-3">
+                        <input type="text" name="listTele" class="form-control" [(ngModel)]="codigoTelefono">
+                    </div>
+                    <div class="col-9">
+                        <input type="text" id="telefonoEmpleo" name="telefono" [(ngModel)]="telefono" class="form-control" placeholder="Telefono">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" id="emailEmpleo" [(ngModel)]="email" name="email" class="form-control" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label>Ciudad:</label>
+                <input class="form-control" name="ciudad" type="text" [(ngModel)]="opcionCiudad">                
+            </div>
+            <table *ngIf="opcionesSelecionadasCategorias.length > 0"  class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Categoria</th>
+                    </tr>
+                </thead>
+                <tbody  *ngFor="let item of opcionesSelecionadasCategorias; let indece=index" >
+                    <tr>
+                        <th scope="row">{{indece + 1}}</th>
+                        <td>{{item.nombre}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> 
+
+<div class="modal" id="myResume">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Listado de Resumes</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="ciudadesEmpleos">Mis Resume:</label>
+                    <select  id="ciudadesEmpleos" [(ngModel)]="opcionResume" class="form-control">
+                        <option value="0">Selecciona una opción</option>
+                        <option [value] = "item.id"  *ngFor="let item of listResume">{{item.trabajosAnteriores}}</option>
+                    </select>
+                </div>
+
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" [routerLink] = "['curriculum']">Crear Resume</button>
+                <button type="submit" class="btn btn-primary" (click)="postularse()">Register</button>
+            </div>
+        </div>
+    </div>
+</div>

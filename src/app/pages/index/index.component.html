@@ -1,0 +1,71 @@
+<div *ngIf="!listTrabajos" class="text-center"> 
+    <img  alt="" src="../../../assets/img/tenor.gif">
+    <!--<i class="fa fa-circle-o-notch fa-spin"></i>-->
+</div>
+<header *ngIf="listTrabajos" class="sitio-header inicio"></header>
+<br>
+<div class="container">
+    
+    <div *ngIf="listTrabajos" class="row">
+        <div class="col-md-3">
+            <div class="mb-3">
+                <div
+                    class="border bg-primary text-light text-center"
+                    style="font-size: 20px; padding: 5px 0px;"
+                >Trabajos por Categoria</div>
+                <ul class="list-group">
+                    <a
+                        href="#"
+                        class="list-group-item"
+                        [routerLink] = "['/index', 'Categoria:'+ categoria.nombre]"
+                        *ngFor="let categoria of listCategorias;"
+                    >{{categoria.nombre}}</a>
+                </ul>
+            </div>
+            <div>
+                <div
+                    class="border bg-primary text-light text-center"
+                    style="font-size: 20px; padding: 5px 0px;"
+                >Trabajos en Bolivia</div>
+                <ul class="list-group">
+                    <a
+                        href="#"
+                        class="list-group-item"
+                        [routerLink] = "['/index', 'Ciudad:'+ ciudad.nombre]"
+                        *ngFor="let ciudad of listCiudades; let id = index"
+                    >{{ciudad.nombre}}</a>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div
+                    class="border bg-primary text-light text-center col-md-12"
+                    style="font-size: 20px; padding: 5px 0px;"
+                >Trabajos {{opcion}}</div>
+                <br>
+            <div class="row justify-content-center">
+                <div class=" col-md-6" *ngFor="let item of listTrabajos" >
+                        <h4>{{item.titulo}}</h4>
+                        <p>
+                            Descripcion : {{item.descripcion}} <br>
+                            telefono: {{item.telefono}} <br>
+                            email: {{item.email}} <br>
+                        </p>
+                        <p>
+                            <a
+                                class="btn btn-secondary"
+                                [routerLink] = "['/detalleEmpleo', item.id]"
+                                role="button"
+                            >detalles &raquo;</a>
+                        </p>
+                        <br>
+                </div>
+                <div class="center" *ngIf="listTrabajos?.length == 0" >
+                    no hay resultado
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>

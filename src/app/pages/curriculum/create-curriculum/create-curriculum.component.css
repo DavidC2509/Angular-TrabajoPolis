@@ -1,0 +1,3 @@
+input[name=listTele] {
+    pointer-events: none;
+}

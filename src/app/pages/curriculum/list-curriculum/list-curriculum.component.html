@@ -1,0 +1,38 @@
+<br>
+<div *ngIf="!listResume" class="text-center"> 
+    <img  alt="" src="../../../assets/img/tenor.gif">
+    <!--<i class="fa fa-circle-o-notch fa-spin"></i>-->
+</div>
+<div *ngIf="listResume" class="row justify-content-center">
+    <div class="col-10">
+        <h2 class="text-center">Lista de Curriculum</h2><br>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Trabajos Anteriores</th>
+                    <th>Logros</th>
+                    <th>Profesion</th>
+                    <th>Telefono</th>
+                    <th *ngIf="bandera" >Operaciones</th>
+                </tr>
+            </thead>
+            <tbody  *ngFor="let item of listResume; let indece=index" >
+                <tr>
+                    <th scope="row">{{indece + 1}}</th>
+                    <td>{{item.trabajosAnteriores}}</td>
+                    <td>{{item.logros}}</td>
+                    <td>{{item.profesion}}</td>
+                    <td>{{item.telefono}}</td>
+
+                    <td *ngIf="bandera" >
+                        <button class='btn btn-primary' [routerLink] = "['/curriculum', item.id]">
+                            <i class='fa fa-edit'></i></button>
+                        <button class='btn btn-danger'>
+                            <i class='fa fa-trash' (click)="eliminar(item.id)"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

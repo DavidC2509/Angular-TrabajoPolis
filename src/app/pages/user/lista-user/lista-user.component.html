@@ -1,0 +1,38 @@
+<div *ngIf="!listUsuarios" class="text-center"> 
+    <img  alt="" src="../../../assets/img/tenor.gif">
+    <!--<i class="fa fa-circle-o-notch fa-spin"></i>-->
+</div>
+<br>
+<div  *ngIf="listUsuarios" class="row justify-content-center">
+    <div class="col-10">
+        <h2 class="text-center">Lista de Usuarios</h2><br>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Email</th>
+                    <th>Cargo</th>
+                    <th>Operaciones</th>
+                </tr>
+            </thead>
+            <tbody  *ngFor="let item of listUsuarios; let indece=index" >
+                <tr>
+                    <th scope="row">{{indece + 1}}</th>
+                    <td>{{item.nombres}}</td>
+                    <td>{{item.apellidos}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.rol}}</td>
+                    <td>
+                        <button class='btn btn-primary' [routerLink] = "['/usuario', item.id]">
+                            <i class='fa fa-edit'></i></button>
+                        <button class='btn btn-danger'>
+                            <i class='fa fa-trash' (click)="eliminar(item.id)"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

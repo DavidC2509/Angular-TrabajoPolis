@@ -1,0 +1,46 @@
+<br>
+<div *ngIf="!listJob" class="text-center"> 
+    <img  alt="" src="../../../assets/img/tenor.gif">
+    <!--<i class="fa fa-circle-o-notch fa-spin"></i>-->
+</div>
+
+<div *ngIf="listJob" class="row justify-content-center">
+    <div class="col-10">
+        <h2 class="text-center">Tus publicaciones</h2><br>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Titulo</th>
+                    <th>Descripcion</th>
+                    <th>Empresa</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                    <th>Ciudad</th>
+                    <th>Fecha Publicacion</th>
+                    <th>Operaciones</th>
+                </tr>
+            </thead>
+            <tbody  *ngFor="let item of listJob; let indece=index" >
+                <tr>
+                    <th scope="row">{{indece + 1}}</th>
+                    <td>{{item.titulo}}</td>
+                    <td>{{item.descripcion}}</td>
+                    <td>{{item.empresa}}</td>
+                    <td>{{item.telefono}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.ciudad.nombre}}</td>
+                    <td>{{item.fechaPublicacion | date: 'dd/MM/yyyy hh:mm'}}</td>
+                    <td>
+                        <button class='btn btn-primary' [routerLink] = "['/empleo', item.id]">
+                            <i class='fa fa-edit'></i></button>
+                        <button class='btn btn-danger'>
+                            <i class='fa fa-trash' (click)="eliminar(item.id)"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

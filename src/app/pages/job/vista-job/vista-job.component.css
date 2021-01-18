@@ -1,0 +1,3 @@
+input[name=ciudad],input[name=titulo],input[name=empleo],input[name=telefono],input[name=descripcion],input[name=listTele],input[name=email] {
+    pointer-events: none;
+}
